@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
 import { FormGroup, FormControl, Validators, FormsModule, FormBuilder } from '@angular/forms'; 
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { HttpSpaceMeService } from '../http-space-me.service';
 import { Admin } from '../admin';
@@ -32,10 +33,11 @@ export class UpdateFormComponent implements OnInit {
   updatedLastModifyDate;
 
   constructor( 
-    private route:ActivatedRoute, 
+    private route: ActivatedRoute, 
     protected service: HttpSpaceMeService, 
-    private fb:FormBuilder,
-    private location:Location 
+    private fb: FormBuilder,
+    private location: Location,
+    private router: Router,
   ) { 
     this.createUpdateForm()
   }
@@ -90,7 +92,15 @@ export class UpdateFormComponent implements OnInit {
   // baseUrl/{uuid} ==> PUT 
   onSubmit(fromValue){
     const uuid = this.getUuid();
-    this.service.httpPut(this.baseUrl +"/"+ uuid,fromValue).subscribe((data)=> console.log("updated Good!:" + data),(error)=> console.log("出包搂~" +error), ()=>{});
+    this.service.httpPut(this.baseUrl +"/"+ uuid,fromValue).subscribe((data)=> {
+      console.log("updated Good!:" + data)
+      this.router.navigate(["/smartTable"])
+    },(error)=> {
+      console.log("出包搂~" +error)
+      this.router.navigate(["/wrongPage"])
+    }, ()=>{
+      ()=>this.router.navigate(["/smartTable"])
+    });
   }
   
   deny(){
