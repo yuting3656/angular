@@ -17,6 +17,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AgGridTableComponent } from './ag-grid-table/ag-grid-table.component';
 import { MyHttpInterceptor } from './my-http-interceptor';
 import { WrongPageComponent } from './wrong-page/wrong-page.component';
+import { ButtonRenderComponent } from './button-render/button-render.component';
+import { UpdateFormComponent } from './update-form/update-form.component';
+
 
 
 
@@ -30,6 +33,11 @@ import { WrongPageComponent } from './wrong-page/wrong-page.component';
     DashboardComponent,
     AgGridTableComponent,
     WrongPageComponent,
+    ButtonRenderComponent,
+    UpdateFormComponent,
+  ],
+  entryComponents:[
+    ButtonRenderComponent
   ],
   imports: [
     BrowserModule,

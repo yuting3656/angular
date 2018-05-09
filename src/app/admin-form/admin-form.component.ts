@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
+
 import { HttpSpaceMeService } from '../http-space-me.service';
 
 
@@ -31,23 +32,22 @@ export class AdminFormComponent implements OnInit {
         Validators.required, Validators.pattern('[^\\s]+') //不能有空格
       ])), 
       status: new FormControl('Y'),
-      email: new FormControl('', Validators.compose([
-        Validators.required, Validators.pattern(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)
-      ])),   
+      email: new FormControl('', Validators.pattern(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)
+      ),   
       contactMobileTel: new FormControl(''),
-      uuid: new FormControl(''),
+      cardNo: new FormControl(''),
     }); 
   }
   onSubmit(formValue){
     this.service.httpPost(this.baseUrl,formValue).subscribe((data) => {
        console.log(data),     
-       this.router.navigate(['/smartTable']);
+       this.router.navigate(["/smartTable"]);
       },(err)=>{
          console.log("Error Occured" + err);
         for (let e in err){
           console.log(e);
         };
-      }, ()=>this.router.navigate(['/smartTable'])
+      }, ()=>this.router.navigate(["/smartTable"])
     );
     console.log(formValue);
   }

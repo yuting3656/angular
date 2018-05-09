@@ -42,7 +42,7 @@
               <span *ngIf="aGoodForm.get('email').touched || aGoodForm.get('email').dirty"> <!-- Validation from name -->
                  <span *ngIf="aGoodForm.get('email').hasError('pattern')" class='formError'> email格式不對 </span> <!-- Pattrn -->
               </span>
-          <input type="text" class="form-control" id="email" name="email" placeholder="Email" formControlName="email" required>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" formControlName="email">
         </div>
       </div>
     </div>
@@ -55,8 +55,8 @@
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="uuid">門禁卡號</label>
-            <input type="text" class="form-control" id="uuid" name="uuid" placeholder="門禁卡號" formControlName="uuid">
+            <label for="cardNo">門禁卡號</label>
+            <input type="text" class="form-control" id="cardNo" name="cardNo" placeholder="門禁卡號" formControlName="cardNo">
           </div>
         </div>
       </div>

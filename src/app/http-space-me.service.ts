@@ -13,7 +13,7 @@ export class HttpSpaceMeService {
 
   constructor(private http:HttpClient) { }
 
-  //GET
+  //GET 
   httpGet(url:string){
     return this.http.get(url);
   }
@@ -24,9 +24,14 @@ export class HttpSpaceMeService {
   }
 
   //UPDATE
+  httpPut(url:string, body: object){
+    return this.http.put(url, body);
+  }
 
   //DELETE
-
+  httpDelete(url:string){
+    return this.http.delete(url);
+  }
 
 
 

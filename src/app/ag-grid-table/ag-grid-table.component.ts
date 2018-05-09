@@ -14,7 +14,7 @@ export class AgGridTableComponent implements OnInit {
   }
 
   navigatorYAYA(){
-    this.router.navigate(['../smartTable'])
+    this.router.navigate(['/smartTable'])
   }
 
 }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { HttpSpaceMeService } from '../http-space-me.service';
 
+import { ButtonRenderComponent } from '../button-render/button-render.component'
+
 
 @Component({
   selector: 'app-smart-table',
@@ -88,6 +90,12 @@ export class SmartTableComponent implements OnInit {
      status:{
        title:'狀態',
        filter:false,
+     },
+     uuid:{
+       filter:false,
+       type:'custom',
+       renderComponent: ButtonRenderComponent,
+       defalutValue: 'Test',
      },
     },
    };
