@@ -1,0 +1,64 @@
+<form class="form align-self-center" [formGroup]="aGoodForm" (ngSubmit)="onSubmit(aGoodForm.value)" > <!--Reactive Form: [fromGroup]="XXX" -->
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+
+          <label for="account">帳號</label>
+              <span *ngIf="aGoodForm.get('account').touched || aGoodForm.get('account').dirty"> <!-- Validation from account -->
+                   <span *ngIf="aGoodForm.get('account').errors?.required" class='formError'>必填欄位!!!</span> <!-- Required -->
+                   <span *ngIf="aGoodForm.get('account').hasError('pattern')" class='formError'> 帳號入錯誤:(英文大小寫 數字 / _ -) </span> <!-- Pattrn -->
+              </span>
+          <input type="text" class="form-control" id="account" name="account" placeholder="帳號" formControlName="account" required> <!-- fromControlNmae="fieldName"-->
+        </div>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="name">姓名</label>
+              <span *ngIf="aGoodForm.get('name').touched || aGoodForm.get('name').dirty"> <!-- Validation from name -->
+                 <span *ngIf="aGoodForm.get('name').errors?.required" class='formError'>必填欄位!!!</span> <!-- Required -->
+                 <span *ngIf="aGoodForm.get('name').hasError('pattern')" class='formError'> 姓名不能有空格 </span> <!-- Pattrn -->
+             </span>
+          <input type="text" class="form-control" id="name" name="name" placeholder="姓名" formControlName="name" required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputEmail">狀態</label>
+          <select class="form-control" id="status" name="status" formControlName="status">
+            <option value="Y">可使用</option>
+            <option value="A">申請中</option>
+            <option value="D">已註銷</option>
+            <option value="F">已凍結</option>
+            <option value="N">已停用</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="email">Email</label>
+              <span *ngIf="aGoodForm.get('email').touched || aGoodForm.get('email').dirty"> <!-- Validation from name -->
+                 <span *ngIf="aGoodForm.get('email').hasError('pattern')" class='formError'> email格式不對 </span> <!-- Pattrn -->
+              </span>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" formControlName="email" required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="contactMobileTel">連絡電話</label>
+            <input type="text" class="form-control" id="contactMobileTel" name="contactMobileTel" placeholder="連絡電話" formControlName="contactMobileTel">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="uuid">門禁卡號</label>
+            <input type="text" class="form-control" id="uuid" name="uuid" placeholder="門禁卡號" formControlName="uuid">
+          </div>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!aGoodForm.valid">Submit</button>
+  </form>

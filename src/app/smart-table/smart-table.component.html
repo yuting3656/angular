@@ -1,0 +1,17 @@
+<div>
+    <h3>查詢</h3>
+    <app-query-form (querySubmitCliked)="querySubmitCliked($event)"></app-query-form>
+</div>
+
+
+<ng2-smart-table [settings]="settings" [source]=" tableSource"> </ng2-smart-table>
+<div>查詢比數
+    <select name="pageNumber" (change)="changePage($event.target)">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="-1" selected="selected">All</option>
+    </select>
+</div>
