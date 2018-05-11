@@ -22,6 +22,8 @@ import { WrongPageComponent } from './wrong-page/wrong-page.component';
 import { ButtonRenderComponent } from './button-render/button-render.component';
 import { UpdateFormComponent } from './update-form/update-form.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 
@@ -39,6 +41,8 @@ import { LoginComponent } from './login/login.component';
     ButtonRenderComponent,
     UpdateFormComponent,
     LoginComponent,
+    LogoutComponent,
+    NavBarComponent,
   ],
   entryComponents:[
     ButtonRenderComponent

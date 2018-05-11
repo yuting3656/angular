@@ -3,6 +3,10 @@ import { FormGroup, FormControl, Validators, FormsModule, FormBuilder } from '@a
 import { Router } from '@angular/router'; 
 
 import { HttpSpaceMeService } from '../http-space-me.service';
+import { LoginService } from '../login.service';
+
+import { getQueryValue } from '@angular/core/src/view/query';
+import { QueryBindingType } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +17,11 @@ export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
 
-  url="http://api.space.hyweb.com.tw/rest/auth/admin/authentication";
+  url="https://spaceadmin.hyweb.com.tw/rest/auth/admin/authentication";
 
   constructor( 
     protected service: HttpSpaceMeService, 
+    protected loginService: LoginService,
     private fb: FormBuilder, 
     private router:Router,
   ) { }
@@ -32,12 +37,26 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginSubmit(foromValue){
+  loginSubmit(formValue){
     console.log("Here i'm in loginSubmit") 
-    this.service.httpPost(this.url,foromValue).subscribe(data=>console.log(data),(error)=>{
+    
+    // 自己改成querystring !
+    let account = formValue.account;
+    let password = formValue.password;
+    let formValueString:{} = `account=${account}&password=${password}`;
+
+     // console.log( "querydata: " + this.loginService.getQueryData(formValue)); doesn't work lol... 
+    
+    this.service.httpPost(this.url, formValueString).subscribe((data:any) =>{
+      console.log(data),
+      console.log("aythToken: " + data.authToken),
+      this.router.navigate(["/smartTable"]),
+      this.loginService.setAuthToken(data.authToken)
+    },(error)=>{
         console.log(error),
-        this.router.navigate(["/wrongPage"])         
+        window.alert("帳密錯誤喔！")      
     },()=>{})
   }
 
+ 
 }

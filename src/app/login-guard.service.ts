@@ -12,6 +12,7 @@ export class LoginGuardService implements CanActivate {
     if(this.service.mockAuthTokenChecker()){
       return true;
     }else{
+      window.alert("請先登入")
       this.router.navigate(["/login"]);
       return false;
     }

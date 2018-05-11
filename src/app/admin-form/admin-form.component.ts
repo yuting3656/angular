@@ -43,7 +43,7 @@ export class AdminFormComponent implements OnInit {
        console.log(data),     
        this.router.navigate(["/smartTable"]);
       },(err)=>{
-         console.log("Error Occured" + err);
+         console.log("Error Occured (from admin-form):" + err);
         for (let e in err){
           console.log(e);
           this.router.navigate(["/wrongPage"]);

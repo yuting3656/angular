@@ -32,16 +32,15 @@ export class SmartTableComponent implements OnInit {
   tableSource: LocalDataSource;
 
   constructor( protected service: HttpSpaceMeService, private router:Router) { 
-    /*一載入業面後 smart table 讀取 defalut url */
     this.tableSource = new LocalDataSource;
-    service.httpGet(this.url)
-        .subscribe( (data) => {
-          this.tableSource.load(data["resultList"])
-        })
- 
   }
 
   ngOnInit() {
+       /*一載入業面後 smart table 讀取 defalut url */
+    this.service.httpGet(this.url)
+    .subscribe( (data) => {
+      this.tableSource.load(data["resultList"])
+    })
   }
 
   /* 點級 查詢筆數 觸發的funtion*/

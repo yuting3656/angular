@@ -14,6 +14,7 @@ import { LoginGuardService } from './login-guard.service';
 const routes: Routes=[
   { path: '', redirectTo:'smartTable', pathMatch:'full' },
   { path: 'smartTable', component: SmartTableComponent, canActivate:[LoginGuardService] },
+  { path: 'smartTable/:delete', redirectTo:'smartTable', canActivate:[LoginGuardService] },
   { path: 'agGridTable', component: AgGridTableComponent, canActivate:[LoginGuardService]},
   { path: 'adminForm', component: AdminFormComponent, canActivate:[LoginGuardService] },
   { path: 'wrongPage', component: WrongPageComponent },

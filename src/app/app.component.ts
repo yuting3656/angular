@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service'; 
 
 @Component({
@@ -6,13 +6,14 @@ import { LoginService } from './login.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   fridayProject = 'Yuting FridayProject';
 
-  constructor( private service: LoginService ){
+  constructor( protected service: LoginService, ){
 
   }
 
-  showingToken:boolean = this.service.mockAuthTokenChecker();
+  ngOnInit(){
+  }
 
 }
