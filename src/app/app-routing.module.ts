@@ -7,14 +7,18 @@ import { AgGridTableComponent } from './ag-grid-table/ag-grid-table.component';
 import { AdminFormComponent } from './admin-form/admin-form.component';
 import { WrongPageComponent } from './wrong-page/wrong-page.component';
 import { UpdateFormComponent } from './update-form/update-form.component'; 
+import { LoginComponent } from './login/login.component';
+import { LoginGuardService } from './login-guard.service'; 
+
 
 const routes: Routes=[
   { path: '', redirectTo:'smartTable', pathMatch:'full' },
-  { path: 'smartTable', component: SmartTableComponent },
-  { path: 'agGridTable', component: AgGridTableComponent },
-  { path: 'adminForm', component: AdminFormComponent },
+  { path: 'smartTable', component: SmartTableComponent, canActivate:[LoginGuardService] },
+  { path: 'agGridTable', component: AgGridTableComponent, canActivate:[LoginGuardService]},
+  { path: 'adminForm', component: AdminFormComponent, canActivate:[LoginGuardService] },
   { path: 'wrongPage', component: WrongPageComponent },
-  { path: 'updateForm', component: UpdateFormComponent },
+  { path: 'updateForm', component: UpdateFormComponent, canActivate:[LoginGuardService] },
+  { path: 'login', component: LoginComponent },
 ]
 
 @NgModule({

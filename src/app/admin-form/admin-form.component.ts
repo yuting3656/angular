@@ -15,10 +15,10 @@ export class AdminFormComponent implements OnInit {
   
   aGoodForm : FormGroup;
 
-    // baseUrl + queryString + pagerString 
-    baseUrl="http://api.space.hyweb.com.tw/rest/member/admin/accounts";
-    queryString="?queryString=%7B%22account%22%3A%22%22%2C%22cardNo%22%3A%22%22%2C%22name%22%3A%22%22%2C%22email%22%3A%22%22%7D";
-    pagerString="&pagerString=%7B%22currentPage%22%3A1%2C%22pageSize%22%3A10%2C%22maxPage%22%3A1%2C%22totalCount%22%3A1%2C%22resultList%22%3A%5B%5D%7D";
+  // baseUrl + queryString + pagerString 
+  baseUrl="http://api.space.hyweb.com.tw/rest/member/admin/accounts";
+  queryString="?queryString=%7B%22account%22%3A%22%22%2C%22cardNo%22%3A%22%22%2C%22name%22%3A%22%22%2C%22email%22%3A%22%22%7D";
+  pagerString="&pagerString=%7B%22currentPage%22%3A1%2C%22pageSize%22%3A10%2C%22maxPage%22%3A1%2C%22totalCount%22%3A1%2C%22resultList%22%3A%5B%5D%7D";
    
 
   constructor( protected service:HttpSpaceMeService, private router:Router) { }

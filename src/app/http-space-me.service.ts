@@ -4,14 +4,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class HttpSpaceMeService {
 
-    
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
 
-  constructor(private http:HttpClient) { }
+  constructor( private http: HttpClient ) { }
 
   //GET 
   httpGet(url:string){

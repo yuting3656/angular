@@ -1,0 +1,22 @@
+<div class="col-md-6 col-md-offset-3">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm.value)" method="POST" acntion=".">
+      <div class="form-group">
+          <label for="account">Account</label>
+          <input type="text" class="form-control" id="account" name="account" formControlName="account" required />
+          <div *ngIf="loginForm.get('account').touched || loginForm.get('account').dirty">
+            <span *ngIf="loginForm.get('account').errors?.required" class='formError'>Account is required</span>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" formControlName="password" required />
+          <div *ngIf="loginForm.get('password').touched || loginForm.get('password').dirty">
+            <span *ngIf="loginForm.get('password').errors?.required" class='formError'>Password is required</span>
+          </div>
+      </div>
+      <div class="form-group">
+          <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+      </div>
+  </form>
+</div>

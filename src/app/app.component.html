@@ -1,8 +1,9 @@
 <h1>{{fridayProject}}</h1>
-<nav>
+<nav *ngIf="showingToken">
   <a routerLink="/smartTable"> Smart Table</a>
   <a routerLink="/agGridTable"> Ag-Grid Table</a>
   <a routerLink="/adminForm"> + Admin Form</a>
 </nav>
 <router-outlet></router-outlet>
+
 
