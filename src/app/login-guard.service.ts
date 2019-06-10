@@ -8,12 +8,12 @@ export class LoginGuardService implements CanActivate {
 
   constructor( protected service: LoginService, private router: Router ) { }
 
-  canActivate(){
-    if(this.service.mockAuthTokenChecker()){
+  canActivate() {
+    if ( this.service.mockAuthTokenChecker()) {
       return true;
-    }else{
-      window.alert("請先登入")
-      this.router.navigate(["/login"]);
+    } else {
+      window.alert('請先登入');
+      this.router.navigate(['/login']);
       return false;
     }
   }

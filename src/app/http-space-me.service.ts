@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HttpSpaceMeService {
@@ -12,34 +13,24 @@ export class HttpSpaceMeService {
 
   constructor( private http: HttpClient ) { }
 
-  //GET 
-  //GETHttpHeaders
-  httpGet(url:string, options?:any){
+  // GET
+  // GETHttpHeaders
+  httpGet(url: string, options?: any): Observable<any> {
     return this.http.get(url);
   }
 
-  //POST
-  httpPost(url:string, body: object, options?:any){
-    return this.http.post(url,body);
+  // POST
+  httpPost(url: string, body: object, options?: any): Observable<any> {
+    return this.http.post(url, body);
   }
 
-  //UPDATE
-  httpPut(url:string, body: object, options?:HttpHeaders){
+  // UPDATE
+  httpPut(url: string, body: object, options?: HttpHeaders): Observable<any> {
     return this.http.put(url, body);
   }
 
-  //DELETE
-  httpDelete(url:string, options?:any){
+  // DELETE
+  httpDelete(url: string, options?: any): Observable<any> {
     return this.http.delete(url);
-  }
-
-  getDataFormContentTpe(){
-    const authReq = 
-      { 
-      headers: new HttpHeaders({
-         'Content-Type': 'application/x-www-form-urlencoded',// 這裡可以放 'application/x-www-form-urlencoded''multipart/form-data'  
-          })
-      }
-    return authReq;   
   }
 }
